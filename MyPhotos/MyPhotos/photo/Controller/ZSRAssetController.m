@@ -76,7 +76,8 @@ static NSString * const reuseIdentifier = @"AssetCell";
     ZSRAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    [options setSynchronous:NO];
+    options.synchronous = NO;
+    options.networkAccessAllowed = YES;
     PHAsset *asset = self.assetsFetchResults[indexPath.row];
     self.currentAsset = asset;
     self.currentIndex = indexPath.row;

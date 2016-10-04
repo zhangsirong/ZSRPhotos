@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSUInteger currentIndex;
 
-
 @end
 
 @implementation ZSRAssetGridController
@@ -78,7 +77,8 @@ static CGSize AssetGridThumbnailSize;
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.synchronous = YES;
     options.resizeMode = PHImageRequestOptionsResizeModeFast;
-    
+    options.networkAccessAllowed = YES;
+
     PHAsset *asset = self.assetsFetchResults[indexPath.item];
     CGFloat pro = MAX(asset.pixelHeight, asset.pixelWidth) / MIN(asset.pixelHeight, asset.pixelWidth);
     if (MAX(asset.pixelHeight, asset.pixelWidth) > 4096 && pro > 2) {
